@@ -1,5 +1,4 @@
 DROP DATABASE roar;
-
 CREATE DATABASE roar;
 
 use roar;
@@ -14,8 +13,6 @@ CREATE TABLE user(
 	password VARCHAR(256),
 
 	email VARCHAR(256) UNIQUE,
-
-	dateOfBirth DATE,
 
 	user_role ENUM('USER', 'ADMIN', 'MOD')
 );

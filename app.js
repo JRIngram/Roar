@@ -1,9 +1,17 @@
 const http = require('http');
+const express = require('express');
+const path = require("path");
+const app = express();
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "roar"
+});
+
 const hostname = 'localhost';
 const port = 8081;
-const express = require('express');
-const app = express();
-const path = require("path");
 
 const server = http.createServer((request, response) => {
   const {headers, methods, url} = request;
@@ -19,16 +27,7 @@ const server = http.createServer((request, response) => {
       var email = req.param('email');
       response.write(username + " " + password + " " + email);
     });
-    /*
-    <!--
-    user_id	mediumint(9)
-    username	varchar(255)
-    password	varchar(256)
-    email	varchar(256)
-    dateOfBirth	date
-    user_role	enum('USER','ADMIN','MOD')
-    -->
-    */
+
   }
   else{
     response.status = 404;
@@ -46,6 +45,8 @@ app.get('/sign-up', (req, res) => {
     var password = req.param('password');
     var email = req.param('email');
     res.write(username + " " + password + " " + email);
+    connection.query("INSERT INTO user (username, password, email, user_role) VALUES (\"" + username + "\", \"" + password + "\", \"" + email + "\", " + "\"USER\");");
+    /*INSERT INTO user (username, password, email, user_role) VALUES ("Adzwoolly", "Password", "adz@gmail.co.uk", "USER");*/
     res.end();
 });
 
