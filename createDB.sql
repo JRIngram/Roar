@@ -1,4 +1,4 @@
-DROP DATABASE roar;
+
 CREATE DATABASE roar;
 
 use roar;
@@ -43,18 +43,4 @@ CREATE TABLE postLike(
 	FOREIGN KEY (post_id) REFERENCES post(post_id),
 
 	FOREIGN KEY (user_id) REFERENCES user(user_id)
-);
-
-
-
-CREATE TABLE commentLike(
-
-	comment_id MEDIUMINT,
-
-	user_id MEDIUMINT,
-
-	FOREIGN KEY(post_id) REFERENCES comment(comment_id),
-
-	FOREIGN KEY(user_id) REFERENCES user(user_id)
-
 );
