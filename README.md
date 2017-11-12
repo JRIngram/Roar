@@ -1,2 +1,2 @@
 # roar
-Microblogging site for AstonHack2017 - Used as a node learning exercise.
+Needed to learn node - so made a login screen!
